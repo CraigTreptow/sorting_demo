@@ -71,6 +71,9 @@ def insertion(data: list) -> list:
 
 @timer_func
 def merge(data: list) -> list:
+    return do_merge_sort(data)
+
+def do_merge_sort(data: list) -> list:
     """
     Sorts a list of numbers using the merge sort algorithm.
     """
@@ -83,9 +86,9 @@ def merge(data: list) -> list:
         # Get the right half of the list
         right = data[mid:]
         # Sort the left half of the list
-        merge(left)
+        do_merge_sort(left)
         # Sort the right half of the list
-        merge(right)
+        do_merge_sort(right)
         # Set the current index as zero
         i = 0
         # Set the left index as zero
@@ -130,6 +133,13 @@ def merge(data: list) -> list:
 
 @timer_func
 def quick(data: list) -> list:
+    try:
+        return do_quick_sort(data)
+    except RecursionError:
+        print("Quick: RecursionError: maximum recursion depth exceeded in comparison")
+        return ["Quick: RecursionError: maximum recursion depth exceeded in comparison"]
+
+def do_quick_sort(data: list) -> list:
     """
     Sorts a list of numbers using the quick sort algorithm.
     """
@@ -162,9 +172,9 @@ def quick(data: list) -> list:
                 # Decrement the right index
                 right -= 1
         # Sort the left half of the list
-        quick(data[:left])
+        do_quick_sort(data[:left])
         # Sort the right half of the list
-        quick(data[left:])
+        do_quick_sort(data[left:])
     # Return the sorted list
     return data
 
