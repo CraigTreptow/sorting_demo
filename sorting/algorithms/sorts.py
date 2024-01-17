@@ -5,9 +5,9 @@ def timer_func(func):
         t1 = time() 
         result = func(*args, **kwargs) 
         t2 = time() 
-        # print(f"  Sort {func.__name__!r} executed in {(t2-t1):.4f} seconds") 
-        print(f"  {(t2-t1):>08.4f} seconds - {func.__name__!r}") 
-        return result 
+        total_time_in_seconds = t2-t1
+        # print(f"  {(total_time_in_seconds):>08.4f} seconds - {func.__name__!r}") 
+        return (total_time_in_seconds, result)
     return wrap_func 
   
 @timer_func

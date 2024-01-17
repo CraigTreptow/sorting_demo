@@ -2,18 +2,18 @@ from sorting.algorithms.sorts import *
 from sorting.utils.util import *
 import random
 from time import time 
+# from uniplot import plot
   
 def timer_func(func): 
     def wrap_func(*args, **kwargs): 
         t1 = time() 
         result = func(*args, **kwargs) 
         t2 = time() 
-        # print(f"  Sort {func.__name__!r} executed in {(t2-t1):.4f} seconds") 
         print(f"  {(t2-t1):>08.4f} seconds - {func.__name__!r}") 
         return result 
     return wrap_func 
   
-SIZE = 10
+SIZE = 20_000
 
 @timer_func
 def generate_ascending_list(size: int) -> list:
@@ -32,11 +32,11 @@ data_sorted_ascending = generate_ascending_list(SIZE)
 data_sorted_descending = generate_descending_list(SIZE)
 data_sorted_randomly = generate_random_list(SIZE)
 
-# show_list(data_sorted_ascending)
-# show_list(data_sorted_descending)
-show_list(data_sorted_randomly)
-exit()
-
+# show_list(size = SIZE, title = "ascending", data = data_sorted_ascending)
+# print()
+# show_list(size = SIZE, title = "descending", data = data_sorted_descending)
+# print()
+# show_list(size = SIZE, title = "random", data = data_sorted_randomly)
 
 # Here are some of the most common sorting algorithms:
 # 
@@ -60,31 +60,44 @@ exit()
 
 
 print("\nSorting data sorted ascending...")
-bubble(data_sorted_ascending)
-counting(data_sorted_ascending)
-heap(data_sorted_ascending)
-insertion(data_sorted_ascending)
-merge(data_sorted_ascending)
-quick(data_sorted_ascending)
-selection(data_sorted_ascending)
-shell(data_sorted_ascending)
+(bubble_time_in_seconds, _) = bubble(data_sorted_ascending)
+(counting_time_in_seconds, _) = counting(data_sorted_ascending)
+(heap_time_in_seconds, _) = heap(data_sorted_ascending)
+(insertion_time_in_seconds, _) = insertion(data_sorted_ascending)
+(merge_time_in_seconds, _) = merge(data_sorted_ascending)
+# quick(data_sorted_ascending)
+(selection_time_in_seconds, _) = selection(data_sorted_ascending)
+(shell_time_in_seconds, _) = shell(data_sorted_ascending)
+
+sort_names = ["Bubble", "Counting", "Heap", "Insertion", "Merge", "Selection", "Shell"]
+sort_times = [bubble_time_in_seconds, counting_time_in_seconds, heap_time_in_seconds, insertion_time_in_seconds, merge_time_in_seconds, selection_time_in_seconds, shell_time_in_seconds]
+new_list = [round(t,4) for t in sort_times]
+show_list(size = SIZE, labels = sort_names, data = new_list, title = "ascending")
 
 print("\nSorting data sorted descending...")
-bubble(data_sorted_descending)
-counting(data_sorted_descending)
-heap(data_sorted_descending)
-insertion(data_sorted_descending)
-merge(data_sorted_descending)
+(bubble_time_in_seconds, _) = bubble(data_sorted_descending)
+(counting_time_in_seconds, _) = counting(data_sorted_descending)
+(heap_time_in_seconds, _) = heap(data_sorted_descending)
+(insertion_time_in_seconds, _) = insertion(data_sorted_descending)
+(merge_time_in_seconds, _) = merge(data_sorted_descending)
 # quick(data_sorted_descending)
-selection(data_sorted_descending)
-shell(data_sorted_descending)
+(selection_time_in_seconds, _) = selection(data_sorted_descending)
+(shell_time_in_seconds, _) = shell(data_sorted_descending)
+
+sort_times = [bubble_time_in_seconds, counting_time_in_seconds, heap_time_in_seconds, insertion_time_in_seconds, merge_time_in_seconds, selection_time_in_seconds, shell_time_in_seconds]
+new_list = [round(t,4) for t in sort_times]
+show_list(size = SIZE, labels = sort_names, data = new_list, title = "descending")
 
 print("\nSorting data sorted randomly...")
-bubble(data_sorted_randomly)
-counting(data_sorted_randomly)
-heap(data_sorted_randomly)
-insertion(data_sorted_randomly)
-merge(data_sorted_randomly)
-# quick(data_sorted_randomly)
-selection(data_sorted_randomly)
-shell(data_sorted_randomly)
+(bubble_time_in_seconds, _) = bubble(data_sorted_randomly)
+(counting_time_in_seconds, _) = counting(data_sorted_randomly)
+(heap_time_in_seconds, _) = heap(data_sorted_randomly)
+(insertion_time_in_seconds, _) = insertion(data_sorted_randomly)
+(merge_time_in_seconds, _) = merge(data_sorted_randomly)
+# quick(data_sorted_descending)
+(selection_time_in_seconds, _) = selection(data_sorted_randomly)
+(shell_time_in_seconds, _) = shell(data_sorted_randomly)
+
+sort_times = [bubble_time_in_seconds, counting_time_in_seconds, heap_time_in_seconds, insertion_time_in_seconds, merge_time_in_seconds, selection_time_in_seconds, shell_time_in_seconds]
+new_list = [round(t,4) for t in sort_times]
+show_list(size = SIZE, labels = sort_names, data = new_list, title = "randomly")
