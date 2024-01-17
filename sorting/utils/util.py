@@ -1,11 +1,10 @@
-import plotext as plt
+import asciibars
 
-def show_list(data: list) -> None:
+def show_list(data: list, size: int, title: str = "Values (larger are taller)") -> None:
     """
-    Shows a list horizontally, with vertical bars corresponding to the
-    size of the number.
+    Shows a list horizontally, with vertical bars corresponding to the size of the number.
     """
 
-    plt.bar(data)
-    plt.title("Most Favored Pizzas in the World")
-    plt.show()
+    labels = map(str, list(range(1, size+1, 1)))
+    data = list(zip(labels, data))
+    asciibars.plot(data)
