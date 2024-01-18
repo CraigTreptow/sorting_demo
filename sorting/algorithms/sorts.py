@@ -1,4 +1,26 @@
 from time import time 
+
+# Here are some of the most common sorting algorithms:
+# 
+# 1. **Selection Sort**: This algorithm sorts an array by repeatedly finding the minimum element from the unsorted part of the array and putting it at the beginning. It has a time complexity of **O(n^2)** ¹.
+# 
+# 2. **Bubble Sort**: This algorithm repeatedly swaps adjacent elements if they are in the wrong order. It has a time complexity of **O(n^2)** ².
+# 
+# 3. **Insertion Sort**: This algorithm builds the final sorted array one item at a time. It has a time complexity of **O(n^2)** ¹.
+# 
+# 4. **Merge Sort**: This algorithm divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. It has a time complexity of **O(n log n)** ¹².
+# 
+# 5. **Quick Sort**: This algorithm picks an element as a pivot and partitions the given array around the picked pivot. It has a time complexity of **O(n log n)** ¹.
+# 
+# 6. **Heap Sort**: This algorithm sorts an array by first building a heap from the input array and then repeatedly removing the largest element from the heap and adding it to the end of the sorted array. It has a time complexity of **O(n log n)** ¹.
+# 
+# 7. **Counting Sort**: This algorithm sorts an array by counting the number of occurrences of each unique element in the array and then using arithmetic to calculate the position of each element in the sorted output array. It has a time complexity of **O(n + k)**, where k is the range of the non-negative key values ¹.
+# 
+# 8. **Radix Sort**: This algorithm sorts an array by grouping the individual digits of the same place value. It has a time complexity of **O(nk)**, where k is the number of digits in the longest number ¹.
+# 
+# 9. **Bucket Sort**: This algorithm sorts an array by distributing the elements of the array into a number of buckets. Each bucket is then sorted individually, either using a different sorting algorithm or by recursively applying the bucket sorting algorithm. It has a time complexity of **O(n + k)** ¹.
+
+
   
 def timer_func(func): 
     def wrap_func(*args, **kwargs): 
@@ -128,53 +150,6 @@ def do_merge_sort(data: list) -> list:
             k += 1
             # Increment the current index
             i += 1
-    # Return the sorted list
-    return data
-
-@timer_func
-def quick(data: list) -> list:
-    try:
-        return do_quick_sort(data)
-    except RecursionError:
-        print("Quick: RecursionError: maximum recursion depth exceeded in comparison")
-        return ["Quick: RecursionError: maximum recursion depth exceeded in comparison"]
-
-def do_quick_sort(data: list) -> list:
-    """
-    Sorts a list of numbers using the quick sort algorithm.
-    """
-    # If the list has more than one number
-    if len(data) > 1:
-        # Set the pivot as the last number in the list
-        pivot = data[-1]
-        # Set the left index as zero
-        left = 0
-        # Set the right index as the length of the list minus one
-        right = len(data) - 1
-        # While the left index is less than the right index
-        while left <= right:
-            # While the left index is less than the length of the list
-            # and the current number is less than the pivot
-            while left < len(data) and data[left] < pivot:
-                # Increment the left index
-                left += 1
-            # While the right index is greater than or equal to zero
-            # and the current number is greater than the pivot
-            while right >= 0 and data[right] > pivot:
-                # Decrement the right index
-                right -= 1
-            # If the left index is less than or equal to the right index
-            if left <= right:
-                # Swap the numbers
-                data[left], data[right] = data[right], data[left]
-                # Increment the left index
-                left += 1
-                # Decrement the right index
-                right -= 1
-        # Sort the left half of the list
-        do_quick_sort(data[:left])
-        # Sort the right half of the list
-        do_quick_sort(data[left:])
     # Return the sorted list
     return data
 

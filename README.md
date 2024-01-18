@@ -3,7 +3,7 @@ An attempt to visualize various sorting algorithms using Python.
 
 ## Running
 
-`python -m sorting`
+`python -m sorting size_of_list (default is 20_000)`
 
 ## Setup Commands 
 
