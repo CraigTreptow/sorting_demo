@@ -1,6 +1,12 @@
 # sorting_demo
 An attempt to visualize various sorting algorithms using Python.
 
+## To Do
+
+- [ ] Add visualizations of the data (bar graph, etc.)
+- [ ] Find a way to "step through" as the sorts run
+
+
 ## Running
 
 `python -m sorting size_of_list (default is 20_000)`
